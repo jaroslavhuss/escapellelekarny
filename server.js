@@ -57,20 +57,30 @@ function writeTheFinalHTML(objects) {
       let www,
         telefon,
         email = "";
-      if (objects[i].WWW !== undefined) {
+      //WWW
+      if (objects[i].WWW) {
         www = '<a target="_blank" href="' + objects[i].WWW + '">www</a>';
       } else {
         www = "";
       }
+      if (objects[i].TELEFON) {
+        telefon = objects[i].TELEFON;
+      } else {
+        telefon = "";
+      }
+      if (objects[i].EMAIL) {
+        email =
+          '<a target="_blank" href="mailto:' + objects[i].EMAIL + '">mail</a>';
+      } else {
+        email = "";
+      }
       finalString += `
-      <h3>${adresa} - </h3>
+      <h3>${adresa}</h3>
       <a target="_blank" href="${
         "http://maps.google.com/maps?q=" + adresa
-      }">Map</a> ${www}
+      }">Map</a> ${www} ${telefon} ${email}
 
       `;
-      //www
-      //Telefon
       //Email
     }
     pharmaList.innerHTML = finalString;
