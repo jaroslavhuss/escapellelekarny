@@ -1,52 +1,107 @@
 "use strict";
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+      args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+      _next(undefined);
+    });
+  };
+}
+
 var form = document.getElementById("submitFormPharmacyFinder");
 var inputField = document.getElementById("lekarnafinder");
 var pharmaList = document.getElementById("pharmaLists");
-form.addEventListener("submit", async function (e) {
-  e.preventDefault();
-  pharmaList.innerHTML = "Loading your data... Moment";
-  var allDrugStores = [];
-  var openingHours = [];
-  fetch(
-    "https://raw.githubusercontent.com/jaroslavhuss/escapellelekarny/master/lekarny-seznam.json"
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      //Loop through pharmacies and make new obj property for fulltext
-      var tempArr = [];
+form.addEventListener(
+  "submit",
+  /*#__PURE__*/ (function () {
+    var _ref = _asyncToGenerator(
+      /*#__PURE__*/ regeneratorRuntime.mark(function _callee(e) {
+        var allDrugStores, openingHours;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch ((_context.prev = _context.next)) {
+              case 0:
+                e.preventDefault();
+                pharmaList.innerHTML = "Loading your data... Moment";
+                allDrugStores = [];
+                openingHours = [];
+                fetch(
+                  "https://raw.githubusercontent.com/jaroslavhuss/escapellelekarny/master/lekarny-seznam.json"
+                )
+                  .then(function (response) {
+                    return response.json();
+                  })
+                  .then(function (data) {
+                    //Loop through pharmacies and make new obj property for fulltext
+                    var tempArr = [];
 
-      for (var i = 0; i < data.length; i++) {
-        data[i].fullText =
-          data[i].MESTO +
-          " " +
-          data[i].ULICE +
-          " " +
-          data[i].NAZEV +
-          " " +
-          data[i].PSC;
-        tempArr.push(data[i]);
-      }
+                    for (var i = 0; i < data.length; i++) {
+                      data[i].fullText =
+                        data[i].MESTO +
+                        " " +
+                        data[i].ULICE +
+                        " " +
+                        data[i].NAZEV +
+                        " " +
+                        data[i].PSC;
+                      tempArr.push(data[i]);
+                    }
 
-      allDrugStores = tempArr;
-    })
-    .then(function () {
-      fetch(
-        "https://raw.githubusercontent.com/jaroslavhuss/escapellelekarny/master/kod-pracoviste.json"
-      )
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          openingHours = data;
-        })
-        .then(function () {
-          workAllDataWell(allDrugStores, openingHours);
-        });
-    });
-});
+                    allDrugStores = tempArr;
+                  })
+                  .then(function () {
+                    fetch(
+                      "https://raw.githubusercontent.com/jaroslavhuss/escapellelekarny/master/kod-pracoviste.json"
+                    )
+                      .then(function (response) {
+                        return response.json();
+                      })
+                      .then(function (data) {
+                        openingHours = data;
+                      })
+                      .then(function () {
+                        workAllDataWell(allDrugStores, openingHours);
+                      });
+                  });
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      })
+    );
+
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  })()
+);
 
 function workAllDataWell(pharma, hours) {
   if (inputField.value.length > 3) {
