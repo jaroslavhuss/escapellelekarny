@@ -71,7 +71,8 @@ function writeTheFinalHTML(objects) {
       let adresa = objects[i].NAZEV + " - " + objects[i].ULICE;
       let www,
         telefon,
-        email = "";
+        email,
+        objednat = "";
       //WWW
       if (objects[i].WWW) {
         www = '<a target="_blank" href="' + objects[i].WWW + '">www</a>';
@@ -89,13 +90,25 @@ function writeTheFinalHTML(objects) {
       } else {
         email = "";
       }
+      console.log(adresa.match(/pilulka/gi));
+      console.log(adresa);
+      if (adresa.match(/pilulka/gi)) {
+        //Pilulka
+        objednat =
+          '<a class="objednat" target="blank" href="https://www.pilulka.cz/escapelle-por-tbl-nob-1x1-5mg">Go to E-shop now!</a>';
+      } else if (adresa.match(/benu/gi)) {
+        objednat =
+          '<a class="objednat" target="blank" href="https://www.benu.cz/escapelle-peroralni-neobalene-tablety-1x1-5mg">Go to E-shop now!</a>';
+      } else {
+        objednat = "";
+      }
       finalString += `
       <h3 class="collapseThis">${adresa}</h3>
       <div class="theData">
       <span class="main-bar">
       <a target="_blank" href="${
         "http://maps.google.com/maps?q=" + adresa
-      }">Map</a> ${www} ${email} tel: ${telefon}
+      }">Map</a> ${www} ${email} tel: ${telefon} 
       </span>
       <div class='opening-hours'>
          <table>
@@ -144,6 +157,11 @@ function writeTheFinalHTML(objects) {
       finalString += `
          </>
          </table>
+         <br />
+         <br />
+         ${objednat}
+         <br />
+         <br />
          </div>
          </div>
          `;

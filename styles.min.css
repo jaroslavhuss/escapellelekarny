@@ -94,3 +94,15 @@ td {
   justify-content: center;
   align-items: center;
 }
+.objednat {
+  color: white;
+  background: #3eb99e;
+  padding: 7px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.disclaimerlink {
+  color: grey;
+  font-size: 13px;
+  margin-top: 10px;
+}
