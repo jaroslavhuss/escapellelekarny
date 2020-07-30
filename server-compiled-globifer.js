@@ -4,7 +4,7 @@ const pharmaList = document.getElementById("pharmaLists");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  pharmaList.innerHTML = "Loading your data... Moment";
+  pharmaList.innerHTML = "Malý moment, hledám lékárny!";
   let allDrugStores = [];
   let openingHours = [];
   fetch(
@@ -59,7 +59,7 @@ function workAllDataWell(pharma, hours) {
     writeTheFinalHTML(finalArrayOfObjects);
   } else {
     pharmaList.innerHTML =
-      "<p>I need you to be more specific! Put more than 3 characters!</p>";
+      "<p>Potřebuji, abyste zadali více jak 3 písmena... Díky!</p>";
   }
 }
 function writeTheFinalHTML(objects) {
@@ -95,10 +95,10 @@ function writeTheFinalHTML(objects) {
       if (adresa.match(/pilulka/gi)) {
         //Pilulka
         objednat =
-          '<a class="objednat" target="blank" href="https://www.pilulka.cz/globifer-forte-40-tablet">Go to E-shop now!</a>';
+          '<a class="objednat" target="blank" href="https://www.pilulka.cz/globifer-forte-40-tablet">Přejít na E-shop!</a>';
       } else if (adresa.match(/benu/gi)) {
         objednat =
-          '<a class="objednat" target="blank" href="https://www.benu.cz/globifer-forte-40-tablet">Go to E-shop now!</a>';
+          '<a class="objednat" target="blank" href="https://www.benu.cz/globifer-forte-40-tablet">Přejít na E-shop!</a>';
       } else {
         objednat = "";
       }
@@ -170,7 +170,7 @@ function writeTheFinalHTML(objects) {
     pharmaList.innerHTML = finalString;
     collapseTheItem();
   } else {
-    pharmaList.innerHTML = "I could not find any pharamacies in your city!";
+    pharmaList.innerHTML = "Nemohl jsem najít žádné lékárny :-( !";
   }
 }
 
