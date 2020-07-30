@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.min.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <form id="submitFormPharmacyFinder">
+        <input
+          style="
+            -webkit-writing-mode: horizontal-tb !important;
+            text-rendering: auto;
+            color: -internal-light-dark-color(black, white);
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-transform: none;
+            text-indent: 0px;
+            text-shadow: none;
+            display: inline-block;
+            text-align: start;
+            -webkit-appearance: textfield;
+            background-color: -internal-light-dark-color(
+              rgb(255, 255, 255),
+              rgb(59, 59, 59)
+            );
+            -webkit-rtl-ordering: logical;
+            cursor: text;
+            margin: 0em;
+            font: 400 13.3333px Arial;
+            padding: 1px 2px;
+            border-width: 2px;
+            border-style: inset;
+            border-color: -internal-light-dark-color(
+              rgb(118, 118, 118),
+              rgb(195, 195, 195)
+            );
+            border-image: initial;
+            font-size: 14px;
+            border-radius: 100px;
+            border: 2px solid #000;
+            height: 46px;
+
+            width: 100%;
+            text-align: center;
+          "
+          type="text"
+          id="lekarnafinder"
+          placeholder="City, Street, Pharmacy, PSC..."
+        />
+        <span>&nbsp;</span>
+        <input
+          style="
+            height: 46px;
+            width: 46px;
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            padding-left: 0;
+            padding-right: 0;
+            color: #fff;
+            background-color: #ff867d;
+            border-color: #ff867d;
+            font-size: 14px;
+            display: inline-block;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.6rem 1.25rem;
+            min-height: 36px;
+            line-height: 1.2;
+            border-radius: 100px;
+            -webkit-transition: color 0.15s ease-in-out,
+              background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+              box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out,
+              background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+              box-shadow 0.15s ease-in-out;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+          "
+          type="submit"
+          value=">"
+        />
+      </form>
+      <p class="disclaimerlink">
+        Don't you see your pharmacy or is something wrong with the list?
+        <br />
+        <strong>Let us know</strong> on
+        <a
+          class="disclaimerlink"
+          href="mailto:info@richtergedeon.cz"
+          target="_blank"
+          rel="noopener noreferrer"
+          >info@richtergedeon.cz</a
+        >
+      </p>
+      <div class="feedOfPharmas" id="pharmaLists"></div>
+    </div>
+    <script src="server-compiled-globifer.js"></script>
+  </body>
+</html>
